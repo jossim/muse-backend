@@ -28,6 +28,17 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(methodOverride("_method"));
 
+app.use((req, res, next) => {
+  let logStr = `${req.method} ${req.url}`;
+
+  if (Object.keys(req.body).length !== 0) {
+    logStr += ` -- DATA: ${JSON.stringify(req.body)}`;
+  }
+
+  console.log(logStr);
+  next();
+});
+
 // HOMEPAGE
 app.get("/", (req, res) => {
   res.json({ message: "express api app is working" });
