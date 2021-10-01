@@ -7,13 +7,16 @@ const SongModel = require("../models").Song;
 
 router.get("/profile/:id", async (req, res) => {
   let artist = await ArtistModel.findByPk(req.params.id, {
-    include: UserModel,
+    include: [
+      { model: UserModel, attributes: ['id', 'name'] }, 
+      SongModel
+    ],
   });
   res.json({ artist });
 });
 
 router.get("/", async (req, res) => {
-  let artists = await ArtistModel.findAll();
+  let artists = await ArtistModel.findAll({ include: SongModel });
   res.json({ artists });
 });
 

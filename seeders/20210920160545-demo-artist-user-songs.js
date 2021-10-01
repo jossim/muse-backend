@@ -8,8 +8,8 @@ module.exports = {
     ]);
 
     let songs = await queryInterface.bulkInsert("Songs", [
-      { title: "Help!", artistId: 7 },
-      { title: "Work", artistId: 8 },
+      { title: "Help!", artistId: 1 },
+      { title: "Work", artistId: 2 },
     ]);
 
     let users = await queryInterface.bulkInsert("Users", [
@@ -18,8 +18,8 @@ module.exports = {
     ]);
 
     let userArtists = await queryInterface.bulkInsert("UserArtists", [
-      { userId: 7, artistId: 7 },
-      { userId: 8, artistId: 8 },
+      { userId: 1, artistId: 1 },
+      { userId: 2, artistId: 1 },
     ]);
   },
 
